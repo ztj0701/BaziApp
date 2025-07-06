@@ -1,0 +1,20 @@
+# docker-compose.yml (Simplified version without Nginx)
+
+services:
+  # 只定义一个服务：我们的 Flask 应用
+  bazi_api:
+    # 使用当前目录下的 Dockerfile 进行构建,关键是要主机网络，否则连不上网
+    build:
+      context: .
+      network: host
+    image: bazi_api:latest 
+    # 设置一个容器名称，方便识别
+    container_name: bazi_api
+    # 重启策略：如果容器因任何原因崩溃，总是自动重启
+    restart: always
+    # 端口映射：这是关键！
+    # 将你服务器主机(host)的 5001 端口映射到容器(container)内部的 5000 端口。
+    # "HOST:CONTAINER"
+    # 你可以把 "5001" 修改为你希望在外部访问的任何端口。
+    ports:
+      - "5001:5000"

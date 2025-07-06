@@ -1,0 +1,8 @@
+# Flask and Gunicorn
+Flask
+gunicorn
+
+# Bazi script dependencies
+lunar_python
+colorama
+bidict
